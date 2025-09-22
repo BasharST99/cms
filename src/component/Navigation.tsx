@@ -22,7 +22,7 @@ export default function Navigation() {
       { name: "Buy", href: "/#property-listings", section: "buy" },
       { name: "Sell", href: "/#services", section: "sell" },
       { name: "Invest", href: "/invest" }, // real route
-      { name: "Agents", href: "/#agents", section: "agents" },
+      { name: "Agents", href: "/agent" },
       { name: "Market Insights", href: "/#insights", section: "insights" },
     ],
     []

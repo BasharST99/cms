@@ -14,11 +14,12 @@ export type DirectusFetchOptions = {
   cache?: RequestCache;
   auth?: AuthMode;
   signal?: AbortSignal;
+  tags?: string[];
 };
 
 export async function directusFetch<T>(
   path: string,
-  { params, revalidate, cache, auth = "auto", signal }: DirectusFetchOptions = {}
+  { params, revalidate, cache, auth = "auto", signal, tags }: DirectusFetchOptions = {}
 ): Promise<T> {
   const url = new URL(`${DIRECTUS_URL}${path}`);
   Object.entries(params ?? {}).forEach(([key, value]) =>
@@ -53,8 +54,8 @@ export async function directusFetch<T>(
 
   if (cache) init.cache = cache;
   if (!cache && !isServer) init.cache = "no-store";
-  if (isServer && typeof revalidate === "number") {
-    init.next = { revalidate };
+  if (isServer && (typeof revalidate === "number" || (tags && tags.length))) {
+    init.next = { revalidate, tags };
   }
 
   const response = await fetch(url.toString(), init);

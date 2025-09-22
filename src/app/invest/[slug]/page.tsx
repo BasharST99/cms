@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 
 type Params = { slug: string };
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
-  const title = `Invest: ${params.slug} — Premium Real Estate`;
-  const description = `Investment detail for ${params.slug}.`;
-  return { title, description };
+export function generateMetadata(): Metadata {
+  return { title: "Invest — Dynamic", description: "Investment dynamic page" };
 }
 
-export default function InvestSlugPage({ params }: { params: Params }) {
-  const { slug } = params;
+export default function InvestSlugPage({ params }: any) {
+  const slug = params?.slug as string;
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
       <h1 className="text-3xl font-semibold mb-4">Invest: {slug}</h1>
@@ -20,4 +18,3 @@ export default function InvestSlugPage({ params }: { params: Params }) {
     </main>
   );
 }
-
