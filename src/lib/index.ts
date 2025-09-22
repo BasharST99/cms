@@ -1,7 +1,7 @@
 // src/lib/index.ts
 export * from "./directus/client";
-export * from "./directus/hero";
-export * from "./directus/featured";
-export * from "./directus/services";
-export * from "./directus/investment";
-export * from "./directus/agents";
+export * from "./directus/home/hero";
+export * from "./directus/home/featured";
+export * from "./directus/home/services";
+export * from "./directus//home/investment";
+export * from "./directus/home/agents";

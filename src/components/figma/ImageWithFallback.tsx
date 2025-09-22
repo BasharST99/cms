@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- fallback component intentionally uses native img for data URIs */
 import React, { useState } from 'react'
 
 const ERROR_IMG_SRC =

@@ -94,7 +94,7 @@ export default function Navigation() {
             href="/"
             className="h-10 w-28 transition-opacity hover:opacity-80"
           >
-            {/* eslint-disable-next-line jsx-a11y/alt-text */}
+            { }
             <svg
               className="block size-full"
               fill="none"

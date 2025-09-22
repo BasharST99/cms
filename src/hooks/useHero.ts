@@ -2,11 +2,8 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchHero } from "@/lib/directus";
+import { heroQueryOptions } from "@/lib/directus/queries";
 
 export function useHero() {
-  return useQuery({
-    queryKey: ["hero"],
-    queryFn: fetchHero,
-  });
+  return useQuery(heroQueryOptions());
 }

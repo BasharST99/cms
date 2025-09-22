@@ -1,24 +1,19 @@
 // src/lib/directus/client.ts
-export const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_URL!;
-const PUBLIC_TOKEN = process.env.NEXT_PUBLIC_DIRECTUS_TOKEN; // optional, read-only token for public role
+import { directusFetch, getAssetURL, type DirectusFetchOptions } from "./fetcher";
 
-export function getAssetURL(id?: string | null, qs?: Record<string, string | number>) {
-  if (!id) return "";
-  const u = new URL(`${DIRECTUS_URL}/assets/${id}`);
-  Object.entries(qs ?? {}).forEach(([k, v]) => u.searchParams.set(k, String(v)));
-  return u.toString();
-}
+export { DIRECTUS_URL } from "./fetcher";
+export { getAssetURL };
 
-type FetchOpts = { cache?: RequestCache | "no-store"; auth?: "public" };
+type FetchOpts = Pick<DirectusFetchOptions, "cache" | "auth">;
 
-export async function fetchJSON<T>(path: string, params?: Record<string, string>, opts: FetchOpts = {}) {
-  const url = new URL(`${DIRECTUS_URL}${path}`);
-  Object.entries(params ?? {}).forEach(([k, v]) => url.searchParams.set(k, v));
-
-  const headers: HeadersInit = {};
-  if (opts.auth === "public" && PUBLIC_TOKEN) headers.Authorization = `Bearer ${PUBLIC_TOKEN}`;
-
-  const res = await fetch(url.toString(), { headers, cache: opts.cache ?? "no-store" });
-  if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${url.pathname}`);
-  return (await res.json()) as T;
+export async function fetchJSON<T>(
+  path: string,
+  params?: Record<string, string>,
+  opts: FetchOpts = {}
+) {
+  return directusFetch<T>(path, {
+    params,
+    cache: opts.cache,
+    auth: opts.auth ?? "auto",
+  });
 }

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import svgPaths from "./svg-nby02nlaqg";
 import imgFrame17 from "/assets/5e9207bcb735441d972e642ef3dc91e8c03e307c.png";
 import imgFrame22 from "/assets/f23eb893348f59a0eef3df0739393d997b419cfd.png";
@@ -907,7 +908,7 @@ function Frame9() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -919,7 +920,7 @@ function Frame9() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1187,7 +1188,7 @@ function Frame30() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1199,7 +1200,7 @@ function Frame30() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1467,7 +1468,7 @@ function Frame36() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1479,7 +1480,7 @@ function Frame36() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1783,7 +1784,7 @@ function Frame42() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -1795,7 +1796,7 @@ function Frame42() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -2063,7 +2064,7 @@ function Frame48() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -2075,7 +2076,7 @@ function Frame48() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -2343,7 +2344,7 @@ function Frame54() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
@@ -2355,7 +2356,7 @@ function Frame54() {
       <div className="flex h-[9px] items-center justify-center relative shrink-0 w-[0px]">
         <div className="flex-none rotate-[270deg]">
           <div className="h-0 relative w-[9px]">
-            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as React.CSSProperties}>
+            <div className="absolute bottom-0 left-0 right-0 top-[-0.5px]" style={{ "--stroke-0": "rgba(173, 181, 189, 1)" } as CSSProperties}>
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9 1">
                 <line id="Line 2" stroke="var(--stroke-0, #ADB5BD)" strokeWidth="0.5" x2="9" y1="0.75" y2="0.75" />
               </svg>
