@@ -49,17 +49,19 @@ export const heroQueryOptions = () => ({
 
 export const featuredPropertiesQueryKey = ["featured-properties"] as const;
 type FeaturedPropertiesQueryFn = QueryFunction<
-  DirectusItemResponse<FeaturedPropertyRecord>,
+  DirectusItemResponse<FeaturedPropertyRecord[]>, // 👈 array of records
   typeof featuredPropertiesQueryKey
 >;
+
 export const featuredPropertiesQueryOptions = () => ({
   queryKey: featuredPropertiesQueryKey,
   queryFn: (({ signal }) =>
-    directusFetch<DirectusItemResponse<FeaturedPropertyRecord>>(
-      "/items/featured_properties/1",
+    directusFetch<DirectusItemResponse<FeaturedPropertyRecord[]>>(
+      "/items/featured_properties",
       {
         params: {
-          fields: "*,blocks.item.*,properties_list.item.*,sort_by.item.*",
+          fields:
+            "*,blocks.item.*,properties_list.item.*,sort_by.item.*,blocks.item.agent_id.name,blocks.item.city_id.name,blocks.item.areas_id.name,blocks.item.properties_list_features.item.feature,blocks.item.image_list.*,blocks.item.properties_list_special.item.feature",
         },
         revalidate: 120,
         signal,

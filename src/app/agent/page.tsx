@@ -1,6 +1,6 @@
-import AgentsSection from "@/components/agents/AgentsSection";
-import Navigation from "@/component/Navigation";
-import FooterSection from "@/component/footer/FooterSection";
+import AgentsSection from "@/features/agents/components/AgentsSection";
+import Navigation from "@/features/layout/components/Navigation";
+import FooterSection from "@/features/layout/components/footer/FooterSection";
 
 export default function Page() {
   return (

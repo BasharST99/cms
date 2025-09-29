@@ -1,14 +1,14 @@
 // src/app/page.tsx  (SERVER — no "use client", no framer-motion imports)
-import Navigation from "@/component/Navigation"; // client component
+import Navigation from "@/features/layout/components/Navigation"; // client component
 import type { Metadata } from "next";
-import HeroSection from "@/component/home/hero/HeroSection"; // server component (fetches data)
-import PropertyListings from "@/component/home/property/PropertySection"; // server or client-safe
-import ServicesSection from "@/component/home/ourServices/OurServicesSection"; // server
-import InvestmentTools from "@/component/home/investmentTools/InvestmentToolsSection"; // server
-import AgentsSection from "@/component/home/agent/AgentsSection"; // server
-import FooterSection from "@/component/footer/FooterSection";
-import MarketInsightsSection from "@/component/home/marketInsights/MarketInsightsSection"; // server
-import ContactSection from "@/component/home/contact/ContactSection";
+import HeroSection from "@/features/home/components/hero/HeroSection"; // server component (fetches data)
+import PropertyListings from "@/features/home/components/property/PropertySection"; // server or client-safe
+import ServicesSection from "@/features/home/components/ourServices/OurServicesSection"; // server
+import InvestmentTools from "@/features/home/components/investmentTools/InvestmentToolsSection"; // server
+import AgentsSection from "@/features/home/components/agent/AgentsSection"; // server
+import FooterSection from "@/features/layout/components/footer/FooterSection";
+import MarketInsightsSection from "@/features/home/components/marketInsights/MarketInsightsSection"; // server
+import ContactSection from "@/features/home/components/contact/ContactSection";
 
 
 

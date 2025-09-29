@@ -9,12 +9,8 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+export default function Page({ params }: any) {
+  const slug = params?.slug as string;
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
       <h1 className="text-3xl font-semibold mb-4">{slug}</h1>

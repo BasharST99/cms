@@ -1,4 +1,4 @@
-import AgentsSection from "@/components/agents/AgentsSection";
+import AgentsSection from "@/features/agents/components/AgentsSection";
 
 export default function AgentsPage() {
   return (
@@ -9,4 +9,3 @@ export default function AgentsPage() {
     />
   );
 }
-

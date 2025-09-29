@@ -36,11 +36,46 @@ export type FeaturedPropertyRecord = {
   id: number;
   title?: string;
   subtitle?: string;
-  blocks?: RelationalItem<Record<string, unknown>>[];
+  blocks?: RelationalItem<BlockItem>[];  // now typed properly
   properties_list?: RelationalItem<Record<string, unknown>>[];
   sort_by?: RelationalItem<Record<string, unknown>>[];
   properties_button?: string;
 };
+export type Agent = {
+  id: number;
+  name: string;
+};
+
+export type City = {
+  id: number;
+  name: string;
+};
+
+export type Area = {
+  id: number;
+  name: string;
+};
+export type BlockItem = {
+  id: number;
+  title?: string;
+  subtitle?: string;
+  value?: string;
+  subprice?: string;
+  bedrooms?: string;
+  bathrooms?: string;
+  sq_ft?: string;
+  sq_ft_value?: number;
+  bedrooms_value?: number;
+  bathrooms_value?: number;
+  properties_list_2?: string;
+  image?: Record<string, unknown>; // you can refine this later
+  agent_id?: Agent;
+  city_id?: City;
+  areas_id?: Area;
+  image_list?: unknown[];
+  
+};
+
 
 export type ContactRecord = {
   id: number;
