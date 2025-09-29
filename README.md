@@ -1,6 +1,6 @@
 # Real Estate Website
 
-A marketing and lead-generation site for a premium real estate brand. The app is built on **Next.js 15 (App Router)** with **React 18**, server components, and **@tanstack/react-query** for cached data access from a Directus headless CMS.
+A marketing and lead-generation site for a premium real estate brand. The app is built on **Next.js 15 (App Router)** with **React 18**, server components, and **@tanstack/react-query** for cached data access from a Directus headless CMS. Recent updates include a Directus-backed authentication flow (signup/login/logout + session refresh) and a modular property card system with richer detail dialogs.
 
 ## Quick Start
 
@@ -14,6 +14,7 @@ A marketing and lead-generation site for a premium real estate brand. The app is
 | Variable | Required | Description |
 | --- | --- | --- |
 | `NEXT_PUBLIC_DIRECTUS_URL` | Yes | Base URL of the Directus project (used on client and server). |
+| `DIRECTUS_URL` | Yes | Server-side Directus base URL (used by Next.js API routes for auth/session). |
 | `DIRECTUS_TOKEN` | Optional | Server-side static token for authenticated Directus requests (prefetching, ISR). |
 | `NEXT_PUBLIC_DIRECTUS_TOKEN` | Optional | Public read-only token for client-side queries; omit for fully public Directus instances. |
 
@@ -25,17 +26,36 @@ A marketing and lead-generation site for a premium real estate brand. The app is
 - React 18 + TypeScript, Tailwind CSS, Framer Motion animations
 - @tanstack/react-query (v5) with server-side prefetch + hydration
 - Directus headless CMS for structured content
+- Directus auth endpoints surfaced via custom Next.js API routes (`/api/auth/*`)
 
 ## Project Structure
 
-The codebase is organised around feature sections, keeping CMS access logic in `src/lib/directus/*` and presentation in `src/component/*`:
+The codebase is organised around feature sections, keeping CMS access logic in `src/lib/directus/*` and presentation in `src/features/*`:
 
-- `src/app` – App Router entry points, root layout, and global providers.
-- `src/component` – UI sections split into server shells and client views.
+- `src/app` – App Router entry points, root layout, and global providers (including auth API routes under `src/app/api/auth`).
+- `src/features` – UI sections split into server shells and client views (now includes `auth/` for login/signup screens and shared shells).
 - `src/lib/directus` – Fetch utilities, query definitions, and legacy helpers.
-- `src/components/ui` – Shared design-system components (Radix UI wrappers, charts, carousels, etc.).
+- `src/hooks` – Client utilities such as the shared `useSession` store used across navigation and auth views.
+- `src/components/ui` – Shared design-system components (Radix UI wrappers, charts, carousels, etc.), including the modular `PropertiesCard/` folder introduced by the latest refactor.
 
 See `docs/architecture.md` for a detailed breakdown and request flow diagrams.
+
+## Authentication
+
+User authentication is handled via Next.js API routes that proxy to Directus:
+
+- `POST /api/auth/signup` – Registers a Directus user and redirects to login on success.
+- `POST /api/auth/login` – Exchanges credentials for Directus access/refresh tokens and stores them as HTTP-only cookies.
+- `POST /api/auth/logout` – Revokes the refresh token server-side and clears cookies.
+- `POST /api/auth/refresh` – Swaps a refresh token for a new access token (used by the session endpoint).
+- `GET /api/auth/session` – Fetches the current user profile, automatically refreshing tokens when possible.
+
+Client components rely on the `useSession` hook (`src/hooks/useSession.ts`) which keeps an in-memory store in sync with the session endpoint so navigation and auth flows update instantly without page reloads.
+
+## UI Highlights
+
+- The property listing card has been decomposed into dedicated subcomponents (`CardMedia`, `CardSummary`, `PropertyDetailsDialog`, `PropertyGalleryDialog`) under `src/components/ui/PropertiesCard/`, making it easier to extend the detail view, gallery, or contact form independently.
+- Navigation conditionally renders auth actions based on the shared session store and exposes a responsive logout button that invalidates Directus tokens.
 
 ## Documentation
 
@@ -48,7 +68,7 @@ The `docs/` directory contains deeper dives into the major concerns:
 
 ## Development Workflow
 
-- **Formatting & linting:** the project relies on Next.js/TypeScript defaults. Run `pnpm exec eslint .` once the ESLint config is finalised.
+- **Formatting & linting:** run `pnpm lint` (ESLint) before submitting changes.
 - **Type checking:** `pnpm exec tsc --noEmit`.
 - **Build:** `pnpm build` (runs Next.js production build with the current ISR settings).
 
