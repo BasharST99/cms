@@ -11,7 +11,7 @@ import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import svgPaths from "@/imports/svg-nby02nlaqg";
 import icon from 'public/assets/icon.png';
-
+import Image from "next/image";
 type NavItem = { name: string; href: string; section?: string };
 
 export default function Navigation() {
@@ -121,7 +121,7 @@ export default function Navigation() {
             href="/"
             className="h-10 w-28 transition-opacity hover:opacity-80"
           >
-            <img src={icon.src} alt="Logo" className="h-full w-full object-contain"/>
+            <Image src={icon.src} alt="Logo" className="h-full w-full object-contain"/>
           </Link>
 
           {/* Desktop nav */}
