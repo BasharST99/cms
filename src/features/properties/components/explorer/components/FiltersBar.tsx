@@ -17,89 +17,121 @@ export default function FiltersBar({
   minBeds,
   minBaths,
   sortBy,
-  areaSearch, // Add this prop
+  areaSearch,
   onTypeChange,
   onMinBedsChange,
   onMinBathsChange,
   onSortChange,
-  onAreaSearchChange, // Add this prop
+  onAreaSearchChange,
   onReset,
   types,
   bedOptions,
   bathOptions,
   sortOptions,
+  selectedArea,
+  selectedCity,
+  onAreaChange,
+  onCityChange,
+  areaOptions,
+  cityOptions,
+  isCityDisabled,
 }: FiltersBarProps) {
   return (
     <div className="bg-white border rounded-lg p-3 shadow-sm">
       <p className="text-xs font-semibold text-gray-500 tracking-wide uppercase mb-2">
         Filters
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-3"> {/* Changed to 6 columns */}
-        {/* Area Search Input */}
-        <div className="md:col-span-2 relative"> {/* Span 2 columns on medium screens */}
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+
+      {/* grid on mobile, flex+wrap on md+ so items stay tight */}
+      <div className="grid grid-cols-2 gap-3 md:flex md:flex-wrap md:items-center">
+        {/* Search */}
+        <div className="relative md:flex-none">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
           <Input
             type="text"
             placeholder="Search area..."
             value={areaSearch || ""}
             onChange={(e) => onAreaSearchChange(e.target.value)}
-            className="pl-10"
+            className="pl-10 w-full md:w-64"
           />
         </div>
 
-        <Select value={typeFilter} onValueChange={onTypeChange}>
-          <SelectTrigger>
-            <SelectValue placeholder="All Types" />
-          </SelectTrigger>
-          <SelectContent>
-            {types.map((t) => (
-              <SelectItem key={t} value={t}>
-                {t === "all" ? "All Types" : t}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* Area */}
+        <div className="md:flex-none">
+          <Select value={selectedArea} onValueChange={onAreaChange}>
+            <SelectTrigger className="w-full md:w-48">
+              <SelectValue placeholder="All Areas" />
+            </SelectTrigger>
+            <SelectContent>
+              {areaOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-        <Select value={sortBy} onValueChange={onSortChange}>
-          <SelectTrigger>
-            <SelectValue placeholder="Sort By" />
-          </SelectTrigger>
-          <SelectContent>
-            {sortOptions.map((s) => (
-              <SelectItem key={s.key} value={s.key}>
-                {s.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* City */}
+        <div className="md:flex-none">
+          <Select
+            value={selectedCity}
+            onValueChange={onCityChange}
+            disabled={isCityDisabled}
+          >
+            <SelectTrigger className="w-full md:w-48">
+              <SelectValue
+                placeholder={isCityDisabled ? "Select area first" : "All Cities"}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {cityOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-        <Select value={String(minBeds)} onValueChange={(v) => onMinBedsChange(Number(v))}>
-          <SelectTrigger>
-            <SelectValue placeholder="Min Beds" />
-          </SelectTrigger>
-          <SelectContent>
-            {bedOptions.map((n) => (
-              <SelectItem key={n} value={String(n)}>
-                {n === 0 ? "Any Beds" : `${n}+ Beds`}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* Type */}
+        <div className="md:flex-none">
+          <Select value={typeFilter} onValueChange={onTypeChange}>
+            <SelectTrigger className="w-full md:w-40">
+              <SelectValue placeholder="All Types" />
+            </SelectTrigger>
+            <SelectContent>
+              {types.map((t) => (
+                <SelectItem key={t} value={t}>
+                  {t === "all" ? "All Types" : t}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-        <Select value={String(minBaths)} onValueChange={(v) => onMinBathsChange(Number(v))}>
-          <SelectTrigger>
-            <SelectValue placeholder="Min Baths" />
-          </SelectTrigger>
-          <SelectContent>
-            {bathOptions.map((n) => (
-              <SelectItem key={n} value={String(n)}>
-                {n === 0 ? "Any Baths" : `${n}+ Baths`}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {/* Sort (wider ~ “1.25 col” feel) */}
+        <div className="md:flex-none">
+          <Select value={sortBy} onValueChange={onSortChange}>
+            <SelectTrigger className="w-full md:w-56">
+              <SelectValue placeholder="Sort By" />
+            </SelectTrigger>
+            <SelectContent className="w-[var(--radix-select-trigger-width)]">
+              {sortOptions.map((s) => (
+                <SelectItem key={s.key} value={s.key}>
+                  {s.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
 
+
+        {/* Reset */}
+        <Button variant="outline" onClick={onReset} className="w-full md:flex-none md:w-28">
+          Reset
+        </Button>
       </div>
     </div>
   );

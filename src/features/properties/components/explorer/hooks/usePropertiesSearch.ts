@@ -12,6 +12,8 @@ export type UsePropertiesSearchArgs = {
   minBaths: number;
   sortBy: string;
   areaSearch?: string;
+  areaId?: string | number;
+  cityId?: string | number;
 };
 
 export function usePropertiesSearch({
@@ -22,6 +24,8 @@ export function usePropertiesSearch({
   minBaths,
   sortBy,
   areaSearch,
+  areaId,
+  cityId,
 }: UsePropertiesSearchArgs) {
   const dataQ = useQuery(
     propertiesSearchQueryOptions({
@@ -32,6 +36,8 @@ export function usePropertiesSearch({
       minBaths,
       sort: sortBy as any,
       areaSearch,
+      areaId,
+      cityId,
     })
   );
 

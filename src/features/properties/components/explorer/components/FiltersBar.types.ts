@@ -1,5 +1,10 @@
 import type { SortOption } from "@/types/components";
 
+export type FiltersSelectOption = {
+  value: string;
+  label: string;
+};
+
 export type FiltersBarProps = {
   typeFilter: string;
   minBeds: number;
@@ -16,4 +21,11 @@ export type FiltersBarProps = {
   sortOptions: SortOption[];
   onAreaSearchChange: (value: string) => void;
   areaSearch?: string;
+  selectedArea: string;
+  selectedCity: string;
+  onAreaChange: (value: string) => void;
+  onCityChange: (value: string) => void;
+  areaOptions: FiltersSelectOption[];
+  cityOptions: FiltersSelectOption[];
+  isCityDisabled?: boolean;
 };
