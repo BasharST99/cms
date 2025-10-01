@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { Facebook, Linkedin, Twitter } from "lucide-react";
-import svgPaths from "@/imports/svg-nby02nlaqg";
 import { getAssetURL } from "@/lib/directus/client";
 import { footerQueryOptions } from "@/lib/directus/queries";
 import type { FooterRecord } from "@/types/directus";
@@ -75,9 +74,12 @@ export default function FooterSectionClient() {
                 <img src={logoUrl} alt="Logo" className="h-10 w-28 object-contain" />
               ) : (
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 114 38">
-                  <g>
-                    <path d={svgPaths.p236b5800} fill="white" />
-                  </g>
+                  {/* <g>
+                    <rect width="114" height="38" fill="#374151" />
+                    <text x="50%" y="50%" fill="#9CA3AF" fontSize="14" fontFamily="Arial, sans-serif" dy=".3em" textAnchor="middle">
+                      Logo
+                    </text>
+                  </g> */}
                 </svg>
               )}
             </div>

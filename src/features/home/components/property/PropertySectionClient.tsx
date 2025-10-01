@@ -38,17 +38,28 @@ function normalizeProperties(data?: FeaturedPropertyRecord | null) {
     const lonRaw =
       (record as any).lon ?? (record as any).lng ?? (record as any).longitude ?? (record as any).lon_value ?? (record as any).longitude_value;
 
+    const cityRecord = (record as any).city_id;
+    const cityValue =
+      typeof cityRecord === "string"
+        ? cityRecord
+        : cityRecord && typeof cityRecord === "object"
+        ? {
+            id: (cityRecord as any).id ?? (cityRecord as any).name ?? "",
+            name: (cityRecord as any).name ?? "",
+          }
+        : undefined;
+
     return {
       id: (record as any).id,
       title: (record as any).title ?? "",
       areas_id: (record as any).areas_id?.name ?? "",
+      city_id: cityValue,
       price,
       beds: Number((record as any).bedrooms_value ?? 0),
       baths: Number((record as any).bathrooms_value ?? 0),
       sqft: Number((record as any).sq_ft_value ?? 0),
       type: ((record as any).properties_list_2 ?? "").toString().toLowerCase(),
       featured: Boolean((record as any).featured),
-      amenities: Array.isArray((record as any).amenities) ? (record as any).amenities : [],
       image: imageId
         ? getAssetURL(imageId, { width: 1200, quality: 75 })
         : "/assets/fallback.png",

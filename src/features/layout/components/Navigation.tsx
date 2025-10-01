@@ -121,7 +121,7 @@ export default function Navigation() {
             href="/"
             className="h-10 w-28 transition-opacity hover:opacity-80"
           >
-            <Image src={icon.src} alt="Logo" className="h-full w-full object-contain"/>
+            <Image src={icon.src} alt="Logo" className="h-full w-full object-contain" width={100} height={100}/>
           </Link>
 
           {/* Desktop nav */}

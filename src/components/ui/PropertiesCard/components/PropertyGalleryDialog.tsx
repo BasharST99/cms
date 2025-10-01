@@ -1,11 +1,11 @@
 import Image from "next/image";
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
+  DialogClose,
 } from "@/components/ui/dialog";
 
 type PropertyGalleryDialogProps = {
@@ -29,13 +29,21 @@ export function PropertyGalleryDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-6xl">
+      <DialogContent className="max-w-6xl w-[95vw] sm:w-full">
+        {/* Close button (always visible, even on mobile) */}
+        <DialogClose className="absolute right-3 top-3 rounded-full p-1 hover:bg-gray-200 focus:outline-none">
+
+        </DialogClose>
+
         <DialogHeader>
           <DialogTitle>Photos — {propertyTitle}</DialogTitle>
-          <DialogDescription>Click any thumbnail to set as the main image.</DialogDescription>
+          <DialogDescription>
+            Click any thumbnail to set as the main image.
+          </DialogDescription>
         </DialogHeader>
 
-        <div className="relative mb-4 h-[420px] w-full overflow-hidden rounded-lg">
+        {/* Main image */}
+        <div className="relative mb-4 aspect-[16/9] w-full overflow-hidden rounded-lg">
           <Image
             src={activeImage}
             alt={`${propertyTitle} photo ${activeIndex + 1}`}
@@ -45,6 +53,7 @@ export function PropertyGalleryDialog({
           />
         </div>
 
+        {/* Thumbnails */}
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-6">
           {imageUrls.map((src, index) => (
             <button
@@ -52,7 +61,9 @@ export function PropertyGalleryDialog({
               type="button"
               onClick={() => onSelect(index)}
               className={`relative aspect-[4/3] overflow-hidden rounded-md ring-2 ${
-                index === activeIndex ? "ring-[#0B3557]" : "ring-transparent"
+                index === activeIndex
+                  ? "ring-[#0B3557]"
+                  : "ring-transparent hover:ring-[#0B3557]/40"
               }`}
             >
               <Image

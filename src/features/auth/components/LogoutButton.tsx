@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, type MouseEvent } from "react";
+import { useState, type ComponentProps, type MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 
-import { Button, type ButtonProps } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/useSession";
 
-export type LogoutButtonProps = ButtonProps & {
+export type LogoutButtonProps = ComponentProps<typeof Button> & {
   label?: string;
 };
 

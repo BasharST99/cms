@@ -14,13 +14,21 @@ export default function ListPane({
   onLoadDetails,
 }: ListPaneProps) {
   return (
-    <div className="h-full p-3 overflow-y-auto">
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+    <div className="h-full overflow-y-auto p-4">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 auto-rows-[minmax(0,1fr)]">
         {properties.map((property, index) => (
           <div
             key={property.id}
             onClick={(e) => onCardClick(property, e)}
-            className="cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                onCardClick(property, event);
+              }
+            }}
+            className="group h-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#0B3557]/70"
           >
             <PropertyCard
               property={property}

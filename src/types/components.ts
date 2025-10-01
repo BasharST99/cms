@@ -9,13 +9,13 @@ export type NormalizedProperty = {
   id: number | string;
   title: string;
   areas_id?: string | Areas | null;
+  city_id?: string | City | null;
   price: string; // e.g. "$1,234,567"
   beds: number;
   baths: number;
   sqft: number;
   type: string; // apartment | villa | ...
   featured: boolean;
-  amenities?: string[];
   image: string; // resolved URL
   lat?: number;
   lon?: number;
@@ -53,6 +53,10 @@ export type PropertyFeature = {
 // Property card item used inside the client view
 export type PropertyCardData = NormalizedProperty;
 export type Areas = {
+  id: number | string;
+  name: string;
+};
+export type City = {
   id: number | string;
   name: string;
 };

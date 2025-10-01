@@ -43,10 +43,13 @@ const toImageUrl = (item: unknown): string | null => {
     "directus_files_id" in (item as Record<string, unknown>) &&
     (item as { directus_files_id?: string | null }).directus_files_id
   ) {
-    return getAssetURL((item as { directus_files_id: string }).directus_files_id, {
-      width: 1600,
-      quality: 80,
-    });
+    return getAssetURL(
+      (item as { directus_files_id: string }).directus_files_id,
+      {
+        width: 1600,
+        quality: 80,
+      }
+    );
   }
   return null;
 };
@@ -73,7 +76,8 @@ export function PropertyCard({
   isFavorite,
   loadDetails,
 }: PropertyCardProps) {
-  const [detailState, setDetailState] = useState<DetailState>(initialDetailState);
+  const [detailState, setDetailState] =
+    useState<DetailState>(initialDetailState);
   const [detailData, setDetailData] = useState<Property | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
@@ -93,9 +97,18 @@ export function PropertyCard({
     return urls.length > 0 ? urls : [cover];
   }, [displayProperty.image_list, property.image_list, cover]);
 
-  const areaLabel = useMemo(() => resolveAreaLabel(displayProperty), [displayProperty]);
-  const pricePerSqft = useMemo(() => computePricePerSqft(displayProperty), [displayProperty]);
-  const previewAreaLabel = useMemo(() => resolveAreaLabel(property), [property]);
+  const areaLabel = useMemo(
+    () => resolveAreaLabel(displayProperty),
+    [displayProperty]
+  );
+  const pricePerSqft = useMemo(
+    () => computePricePerSqft(displayProperty),
+    [displayProperty]
+  );
+  const previewAreaLabel = useMemo(
+    () => resolveAreaLabel(property),
+    [property]
+  );
 
   const featureList = useMemo(() => {
     return (displayProperty.properties_list_features ?? [])
@@ -108,6 +121,10 @@ export function PropertyCard({
       .map((entry: any) => entry?.item?.feature)
       .filter(Boolean) as string[];
   }, [displayProperty.properties_list_special]);
+
+  const handleRelatedSelection = useCallback((next: Property) => {
+    setDetailData(next);
+  }, []);
 
   useEffect(() => {
     if (!detailState.isOpen) {
@@ -149,12 +166,9 @@ export function PropertyCard({
     }
   }, [detailData, loadDetails, property.image_list]);
 
-  const handleDetailVisibility = useCallback(
-    (open: boolean) => {
-      setDetailState((prev) => ({ ...prev, isOpen: open }));
-    },
-    [],
-  );
+  const handleDetailVisibility = useCallback((open: boolean) => {
+    setDetailState((prev) => ({ ...prev, isOpen: open }));
+  }, []);
 
   const openLightbox = useCallback((index = 0) => {
     setActiveImageIdx(index);
@@ -168,7 +182,11 @@ export function PropertyCard({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
         viewport={{ once: true }}
-        className="h-full flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="
+    h-full grid grid-rows-[auto_1fr]
+    bg-white rounded-2xl overflow-hidden
+    shadow-lg hover:shadow-xl transition-all duration-300 group
+  "
       >
         <CardMedia
           property={property}
@@ -198,6 +216,7 @@ export function PropertyCard({
         onOpenLightbox={openLightbox}
         features={featureList}
         highlights={specialHighlights}
+        onPropertyChange={handleRelatedSelection}
       />
 
       <PropertyGalleryDialog

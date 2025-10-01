@@ -28,21 +28,35 @@ export function mapRecord(record: any): NormalizedProperty {
       ? areaRecord.name
       : undefined;
 
-  const amenities = Array.isArray((record as any).amenities)
-    ? ((record as any).amenities as string[])
-    : undefined;
+  const cityRecord = (record as any).city_id;
+  const cityValue =
+    typeof cityRecord === "string"
+      ? cityRecord
+      : cityRecord && typeof cityRecord === "object"
+      ? (() => {
+          const id = (cityRecord as any).id;
+          const name = (cityRecord as any).name ?? "";
+          if (id == null && !name) return undefined;
+          return {
+            id: id ?? name,
+            name,
+          };
+        })()
+      : undefined;
+
+
 
   return {
     id: (record as any).id,
     title: (record as any).title ?? "",
     areas_id: areaName ?? areaRecord ?? undefined,
+    city_id: cityValue,
     price,
     beds: Number((record as any).bedrooms_value ?? (record as any).bedrooms ?? 0),
     baths: Number((record as any).bathrooms_value ?? (record as any).bathrooms ?? 0),
     sqft: Number((record as any).sq_ft_value ?? 0),
     type: ((record as any).properties_list_2 ?? "").toString().toLowerCase(),
     featured: Boolean((record as any).featured),
-    amenities,
     image: imageId ? getAssetURL(imageId, { width: 1200, quality: 75 }) : "/assets/fallback.png",
     lat: latRaw != null && latRaw !== "" ? Number(latRaw) : undefined,
     lon: lonRaw != null && lonRaw !== "" ? Number(lonRaw) : undefined,
